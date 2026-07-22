@@ -122,11 +122,19 @@
 // export default App
 
 export default function App() {
-const fecha = new Date().toLocaleString();
-return (
- <main>
- <h1>Hola SENA</h1>
- <p>Soy Sebastián Serna Gaviria y ésta es mi primera clase de ReactJS :)</p>
- </main>
- )
+  const fecha = new Date().toLocaleString();
+  return (
+    <main>
+      <h1>Hola SENA</h1>
+      <p>
+        Soy Sebastián Serna Gaviria y ésta es mi primera clase de ReactJS :)
+      </p>
+      <p>
+        En esta clase espero aprender a crear aplicaciones web con ReactJS y Vite, y a utilizar herramientas como GitHub y Discord para colaborar con otros desarrolladores.
+      </p>
+      <p>
+        Fecha y hora: {fecha}
+      </p>
+    </main>
+  );
 }
