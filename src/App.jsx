@@ -126,7 +126,7 @@ const fecha = new Date().toLocaleString();
 return (
  <main>
  <h1>Hola SENA</h1>
- <p>Soy Sebastián Serna Gaviria y ésta es mi primera clase de ReactJS</p>
+ <p>Soy Sebastián Serna Gaviria y ésta es mi primera clase de ReactJS :)</p>
  </main>
  )
 }
