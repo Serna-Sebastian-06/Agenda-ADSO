@@ -1,139 +1,63 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
-// import heroImg from './assets/hero.png'
-// import './App.css'
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <section id="center">
-//         <div className="hero">
-//           <img src={heroImg} className="base" width="170" height="179" alt="" />
-//           <img src={reactLogo} className="framework" alt="React logo" />
-//           <img src={viteLogo} className="vite" alt="Vite logo" />
-//         </div>
-//         <div>
-//           <h1>Get started</h1>
-//           <p>
-//             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-//           </p>
-//         </div>
-//         <button
-//           type="button"
-//           className="counter"
-//           onClick={() => setCount((count) => count + 1)}
-//         >
-//           Count is {count}
-//         </button>
-//       </section>
-
-//       <div className="ticks"></div>
-
-//       <section id="next-steps">
-//         <div id="docs">
-//           <svg className="icon" role="presentation" aria-hidden="true">
-//             <use href="/icons.svg#documentation-icon"></use>
-//           </svg>
-//           <h2>Documentation</h2>
-//           <p>Your questions, answered</p>
-//           <ul>
-//             <li>
-//               <a href="https://vite.dev/" target="_blank">
-//                 <img className="logo" src={viteLogo} alt="" />
-//                 Explore Vite
-//               </a>
-//             </li>
-//             <li>
-//               <a href="https://react.dev/" target="_blank">
-//                 <img className="button-icon" src={reactLogo} alt="" />
-//                 Learn more
-//               </a>
-//             </li>
-//           </ul>
-//         </div>
-//         <div id="social">
-//           <svg className="icon" role="presentation" aria-hidden="true">
-//             <use href="/icons.svg#social-icon"></use>
-//           </svg>
-//           <h2>Connect with us</h2>
-//           <p>Join the Vite community</p>
-//           <ul>
-//             <li>
-//               <a href="https://github.com/vitejs/vite" target="_blank">
-//                 <svg
-//                   className="button-icon"
-//                   role="presentation"
-//                   aria-hidden="true"
-//                 >
-//                   <use href="/icons.svg#github-icon"></use>
-//                 </svg>
-//                 GitHub
-//               </a>
-//             </li>
-//             <li>
-//               <a href="https://chat.vite.dev/" target="_blank">
-//                 <svg
-//                   className="button-icon"
-//                   role="presentation"
-//                   aria-hidden="true"
-//                 >
-//                   <use href="/icons.svg#discord-icon"></use>
-//                 </svg>
-//                 Discord
-//               </a>
-//             </li>
-//             <li>
-//               <a href="https://x.com/vite_js" target="_blank">
-//                 <svg
-//                   className="button-icon"
-//                   role="presentation"
-//                   aria-hidden="true"
-//                 >
-//                   <use href="/icons.svg#x-icon"></use>
-//                 </svg>
-//                 X.com
-//               </a>
-//             </li>
-//             <li>
-//               <a href="https://bsky.app/profile/vite.dev" target="_blank">
-//                 <svg
-//                   className="button-icon"
-//                   role="presentation"
-//                   aria-hidden="true"
-//                 >
-//                   <use href="/icons.svg#bluesky-icon"></use>
-//                 </svg>
-//                 Bluesky
-//               </a>
-//             </li>
-//           </ul>
-//         </div>
-//       </section>
-
-//       <div className="ticks"></div>
-//       <section id="spacer"></section>
-//     </>
-//   )
-// }
-
-// export default App
-
+import "./App.css";
+import ContactoCard from "./components/ContactoCard";
 export default function App() {
-  const fecha = new Date().toLocaleString();
+  // Esta es nuestra "base de datos" inicial quemada en el código
+  const contactos = [
+    {
+      id: 1,
+      nombre: "Carolina Pérez",
+      telefono: "300 123 4567",
+      correo: "carolina@sena.edu.co",
+      etiqueta: "Compañera",
+    },
+    {
+      id: 2,
+      nombre: "Juan Díaz",
+      telefono: "301 987 6543",
+      correo: "juan@sena.edu.co",
+      etiqueta: "Instructor",
+    },
+    {
+      id: 3,
+      nombre: "Luisa Martínez",
+      telefono: "320 555 7788",
+      correo: "luisa@sena.edu.co",
+      etiqueta: "Cliente",
+    },
+    {
+      id: 4,
+      nombre: "Ender Jiménez",
+      telefono: "320 780 4739",
+      correo: "enderepremium@sena.edu.co",
+      etiqueta: "Directivo",
+    },
+    {
+      nombre: "Saúl Ramírez",
+      telefono: "322 544 2354",
+      correo: "sramirez@sena.edu.co",
+      etiqueta: "Licenciado",
+    },
+  ];
+
   return (
-    <main>
-      <h1>Hola SENA</h1>
-      <p>
-        Soy Sebastián Serna Gaviria y ésta es mi primera clase de ReactJS :)
-      </p>
-      <p>
-        En esta clase espero aprender a crear aplicaciones web con ReactJS y Vite, y a utilizar herramientas como GitHub y Discord para colaborar con otros desarrolladores.
-      </p>
-      <p>
-        Fecha y hora: {fecha}
+    <main className="app-container">
+      <h1 className="app-title">Agenda ADSO 📒</h1>
+
+      <p className="app-subtitle">Contactos guardados</p>
+
+      {/* Recorremos el arreglo contactos y pintamos una tarjeta por cada uno */}
+      {contactos.map((c) => (
+        <ContactoCard
+          key={c.id} // key única para React
+          nombre={c.nombre} // prop nombre
+          telefono={c.telefono} // prop telefono
+          correo={c.correo} // prop correo
+          etiqueta={c.etiqueta} // prop etiqueta (Cliente, Instructor, etc.)
+        />
+      ))}
+
+      <p className="app-nota">
+        (Versión 0.1 - solo lectura, sin agregar ni editar todavía)
       </p>
     </main>
   );
