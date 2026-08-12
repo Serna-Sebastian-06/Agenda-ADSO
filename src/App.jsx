@@ -1,8 +1,10 @@
+import { useState } from "react";
 import "./App.css";
 import ContactoCard from "./components/ContactoCard";
+import FormularioContacto from "./components/FormularioContacto";
 export default function App() {
   // Esta es nuestra "base de datos" inicial quemada en el código
-  const contactos = [
+  const [contactos, setContactos] = useState([
     {
       id: 1,
       nombre: "Carolina Pérez",
@@ -10,54 +12,42 @@ export default function App() {
       correo: "carolina@sena.edu.co",
       etiqueta: "Compañera",
     },
-    {
-      id: 2,
-      nombre: "Juan Díaz",
-      telefono: "301 987 6543",
-      correo: "juan@sena.edu.co",
-      etiqueta: "Instructor",
-    },
-    {
-      id: 3,
-      nombre: "Luisa Martínez",
-      telefono: "320 555 7788",
-      correo: "luisa@sena.edu.co",
-      etiqueta: "Cliente",
-    },
-    {
-      id: 4,
-      nombre: "Ender Jiménez",
-      telefono: "320 780 4739",
-      correo: "enderepremium@sena.edu.co",
-      etiqueta: "Directivo",
-    },
-    {
-      nombre: "Saúl Ramírez",
-      telefono: "322 544 2354",
-      correo: "sramirez@sena.edu.co",
-      etiqueta: "Licenciado",
-    },
-  ];
+  ]);
+
+  // Agregar
+  const agregarContacto = (nuevo) => {
+    setContactos((prev) => [...prev, { id: Date.now(), ...nuevo }]);
+  };
+
+  // Eliminar
+  const eliminarContacto = (id) => {
+    setContactos((prev) => prev.filter((c) => c.id !== id));
+  };
 
   return (
     <main className="app-container">
-      <h1 className="app-title">Agenda ADSO 📒</h1>
+      <h1 className="app-title">Agenda ADSO v2📒</h1>
 
-      <p className="app-subtitle">Contactos guardados</p>
+      <FormularioContacto onAgregar={agregarContacto}/>
 
+      <section className="lista-contactos">
       {/* Recorremos el arreglo contactos y pintamos una tarjeta por cada uno */}
       {contactos.map((c) => (
         <ContactoCard
           key={c.id} // key única para React
+          id={c.id} //id asignado a cada registro
           nombre={c.nombre} // prop nombre
           telefono={c.telefono} // prop telefono
           correo={c.correo} // prop correo
           etiqueta={c.etiqueta} // prop etiqueta (Cliente, Instructor, etc.)
+          onDelete={eliminarContacto} //prop que da la opción para eliminar registro
         />
       ))}
 
+      </section>
+
       <p className="app-nota">
-        (Versión 0.1 - solo lectura, sin agregar ni editar todavía)
+        (Versión 0.2 - agregar y editar registros ya disponible)
       </p>
     </main>
   );
