@@ -25,31 +25,39 @@ export default function FormularioContacto({onAgregar}) {
 
     return (
         <form onSubmit={onSubmit} className="form-contacto">
+
+        <label>Nombre *</label>
         <input
         name="nombre"
-        placeholder="Nombre"
+        placeholder="Ej:Ana López"
         value={form.nombre}
         onChange={onChange}
         />
+
+        <label>Teléfono *</label>
         <input
         name="telefono"
-        placeholder="Teléfono"
+        placeholder="300 123 4567"
         value={form.telefono}
         onChange={onChange}
         />
+
+         <label>Correo *</label>
         <input
         name="correo"
-        placeholder="Correo"
+        placeholder="Ej: ana@sena.edu.co"
         value={form.correo}
         onChange={onChange}
       />
+
+      <label>Etiqueta (opcional)</label>
       <input
         name="etiqueta"
-        placeholder="Etiqueta (opcional)"
+        placeholder="Ej: Trabajo"
         value={form.etiqueta}
         onChange={onChange}
       />
-      <button type="submit">Agregar contacto</button>
+      <button className="btn-primario">Agregar contacto</button>
       </form>
         );
 }

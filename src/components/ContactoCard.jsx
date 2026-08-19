@@ -1,5 +1,4 @@
 export default function ContactoCard({
-  id,
   nombre,
   telefono,
   correo,
@@ -18,7 +17,7 @@ export default function ContactoCard({
         <button
           type="button"
           className="btn-eliminar"
-          onClick={() => onDelete(id)}
+          onClick={() => onDelete(correo)}
         >
           Eliminar
         </button>
