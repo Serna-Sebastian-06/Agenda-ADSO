@@ -1,4 +1,12 @@
 {
-  "contactos": [],
+  "contactos": [
+    {
+      "nombre": "Sebastián Serna Gaviria",
+      "telefono": "3145632455",
+      "correo": "sebastiansernagaviria@gmail.com",
+      "etiqueta": "CEO",
+      "id": "tVfMu3QZT04"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
