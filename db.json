@@ -6,6 +6,13 @@
       "correo": "sebastiansernagaviria@gmail.com",
       "etiqueta": "CEO",
       "id": "tVfMu3QZT04"
+    },
+    {
+      "nombre": "Ender Jiménez",
+      "telefono": "3126377664",
+      "correo": "enderst2019@gmail.com",
+      "etiqueta": "Lider ejecutivo",
+      "id": "EOiJJ2eTP14"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
