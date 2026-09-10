@@ -111,12 +111,14 @@ function App() {
     // Normalizamos texto a minúsculas para comparar sin problemas
     const nombre = c.nombre.toLowerCase();
     const correo = c.correo.toLowerCase();
+    const telefono = c.telefono.toLowerCase();
     const etiqueta = (c.etiqueta || "").toLowerCase();
 
     // Incluimos el contacto si el término aparece en alguno de estos campos
     return (
       nombre.includes(termino) ||
       correo.includes(termino) ||
+      telefono.includes(termino) ||
       etiqueta.includes(termino)
     );
   });
@@ -172,6 +174,12 @@ function App() {
                 onChange={(e) => setBusqueda(e.target.value)} // Actualiza el estado
               />
 
+              {/* Contador de resultados */}
+              <p className="contador-resultados">
+                Mostrando {contactosOrdenados.length}{" "}
+                {contactosOrdenados.length === 1 ? "contacto" : "contactos"}
+              </p>
+
               <button
                 type="button"
                 onClick={() => setOrdenAsc((prev) => !prev)} // Alternar A-Z / Z-A
@@ -185,7 +193,8 @@ function App() {
             <section className="space-y-4">
               {contactosOrdenados.length === 0 ? (
                 <p className="text-sm text-gray-500">
-                  No se encontraron contactos que coincidan con la búsqueda.
+                  No se encontraron contactos que coincidan con la búsqueda o la
+                  lista de contactos se encuentra vacía.
                 </p>
               ) : (
                 contactosOrdenados.map((c) => (
